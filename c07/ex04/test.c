@@ -6,12 +6,11 @@
 /*   By: youskim <student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 22:28:09 by youskim           #+#    #+#             */
-/*   Updated: 2021/10/25 19:30:41 by youskim          ###   ########.fr       */
+/*   Updated: 2021/10/25 17:41:08 by youskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
 int	str_len(char *str)
 {
 	int	length;
@@ -54,6 +53,7 @@ int	check_base(char c, char *base)
 	return (-1);
 }
 
+
 int	nbr_to_base1(char *nbr, char *base_from)
 {
 	int	start;
@@ -79,50 +79,12 @@ int	nbr_to_base1(char *nbr, char *base_from)
 	return (result * sign);
 }
 
-char	*if_minus(int nb, int count, char *base_to)
-{
-	int		i;
-	char	*final;
-
-	final = (char *)malloc(sizeof(char) * (count + 2));
-	if (final == 0)
-		return (0);
-	final[0] = '-';
-	i = 1;
-	while (nb > 0)
-	{
-		final[count - i + 1] = base_to[nb % str_len(base_to)];
-		nb = nb / str_len(base_to);
-		i++;
-	}
-	final[i] = '\0';
-	return (final);
-}
-
-char	*if_plus(int nb, int count, char *base_to)
-{
-	int		i;
-	char	*final;
-
-	final = (char *)malloc(sizeof(char) * (count + 1));
-	if (final == 0)
-		return (0);
-	i = 1;
-	while (nb > 0)
-	{
-		final[count - i] = base_to[nb % str_len(base_to)];
-		nb = nb / str_len(base_to);
-		i++;
-	}
-	final[i] = '\0';
-	return (final);
-}
-
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		nb_base1;
 	int		sign;		
 	char	*final;
+	int		i;
 	int		count;
 	int		first_nb_base1;
 
@@ -141,15 +103,41 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		count++;
 	}
 	if (sign == 1)
-		return (if_minus(nb_base1, count, base_to));
+	{
+		final = (char*)malloc(sizeof(char) * (count + 2));
+		if (final == 0)
+			return (0);
+		final[0] = '-';
+		i = 1;
+		while (nb_base1 > 0)
+		{
+			final[count - i + 1] = base_to[nb_base1 % str_len(base_to)];
+			nb_base1 = nb_base1 / str_len(base_to);
+			i++;
+		}
+	}	
 	else
-		return (if_plus(nb_base1, count, base_to));
+	{
+		final = (char*)malloc(sizeof(char) * (count + 1));
+		if (final == 0)
+			return (0);
+		i = 1;
+		while (nb_base1 > 0)
+		{
+			final[count - i] = base_to[nb_base1 % str_len(base_to)];
+			nb_base1 = nb_base1 / str_len(base_to);
+			i++;
+		}
+	}
+	final[i] = '\0';
+	return (final);
 }
 #include <stdio.h>
-int	main()
+int	main(void)
 {
-	char *nbr= "bcdef";
-	char *base1="abcdefg";
-	char *base2="01";
-	printf("%s\n", ft_convert_base(nbr, base1, base2));
+	char *nbr = "  -+-bc";
+	char *base_from = "abc";
+	char *base_to = "01";
+	printf("%d\n", nbr_to_base1(nbr, base_from));
+	printf("%s\n", ft_convert_base(nbr, base_from, base_to));
 }
