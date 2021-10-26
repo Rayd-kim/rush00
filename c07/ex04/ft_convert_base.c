@@ -6,7 +6,7 @@
 /*   By: youskim <student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 22:28:09 by youskim           #+#    #+#             */
-/*   Updated: 2021/10/25 19:30:41 by youskim          ###   ########.fr       */
+/*   Updated: 2021/10/26 11:11:58 by youskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 #include <stdio.h>
 int	main()
 {
-	char *nbr= "bcdef";
-	char *base1="abcdefg";
+	char *nbr= "-2147483648";
+	char *base1="0123456789";
 	char *base2="01";
 	printf("%s\n", ft_convert_base(nbr, base1, base2));
 }
