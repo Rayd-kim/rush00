@@ -6,7 +6,7 @@
 /*   By: youskim <student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 15:52:18 by youskim           #+#    #+#             */
-/*   Updated: 2021/10/27 18:46:21 by youskim          ###   ########.fr       */
+/*   Updated: 2021/10/27 19:34:41 by youskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -61,5 +61,3 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	arr[i].copy = 0;
 	return (arr);
 }
-
-

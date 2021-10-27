@@ -6,7 +6,7 @@
 /*   By: youskim <student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:09:10 by youskim           #+#    #+#             */
-/*   Updated: 2021/10/25 21:28:50 by youskim          ###   ########.fr       */
+/*   Updated: 2021/10/27 12:32:10 by youskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -71,4 +71,22 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (arr == 0)
 		return (0);
 	return (str_sep(size, arr, strs, sep));
+}
+
+#include <stdio.h>
+/*int main(int ac, char **av)
+{
+	printf ("%s\n", ft_strjoin(ac, av, "-"));
+	return 0;
+}*/
+
+int	main()
+{
+	char *str[5] = {"ab", "ac", "ad", "aa", "ff"};
+	//str[0] = "a";
+	//str[1] = "b";
+	//str[2] = "c";
+	//str[3] = "d";
+	//str[4] = "e";
+	printf ("%s\n", ft_strjoin(5, str, "-"));
 }
